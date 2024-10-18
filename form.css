@@ -1,0 +1,40 @@
+
+* {
+  padding: auto;  
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+}
+label{
+    color:blue;
+
+}
+input{
+    background-color:paleturquoise;
+}
+
+.date{
+    color: blue;
+    font-style: italic;
+}
+
+#address{
+    color:blue
+}
+
+#abc{
+    color:aqua;
+    font-style: italic;
+}
+#xyz{
+    color:blue;
+    font-style: oblique;
+}
+
+textarea{
+    background-color: paleturquoise;
+}

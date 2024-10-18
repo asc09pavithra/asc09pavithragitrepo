@@ -1,0 +1,29 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+#bulbs-container {
+    display: flex;
+    gap: 20px;
+}
+
+.bulb {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.on-bulb {
+    background-color: yellow;
+}
+
+.off-bulb {
+    background-color: gray;
+}
