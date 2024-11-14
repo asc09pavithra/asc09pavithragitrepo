@@ -1,4 +1,4 @@
-import {traveler} from "./traveler";
+import {traveler} from "./Traveler";
 export class travelermanager {
 private travelers : traveler[] = [];
 
@@ -9,7 +9,6 @@ adduser(Traveler : traveler):void {
 listusers():traveler[] {
     return this.travelers;
 };
-
 
 removeuser(name:string):void {
     this.travelers = this.travelers.filter(traveler => traveler.name !== name);

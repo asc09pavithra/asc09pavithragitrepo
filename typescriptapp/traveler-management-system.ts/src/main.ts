@@ -1,5 +1,5 @@
 import { travelermanager} from './travelermanager';
-import {traveler} from './traveler';
+import {traveler} from './Traveler';
 const Travelermanager = new travelermanager();
 const Traveler : traveler = {
     name: "pavithra",

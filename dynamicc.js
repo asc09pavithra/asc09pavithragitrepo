@@ -1,11 +1,14 @@
+document.addEventListener('DOMContentLoaded', function() {
+var e1 = document.getElementById("submit1");
+if (e1){
+    e1.addEventListener("click", function(e1) {
+        e1.preventDefault();
+        validateForm(); 
 
-
-
-var el = document.getElementById("submit1");
-el.addEventListener("click", (e) => {
-    e.preventDefault();
-    validateForm(); 
 });
+} else {
+    console.error('Element with ID "submit1" not found');
+}
 
 function addOrUpdateRow(label, value) {
     var table = document.getElementById('tab');
@@ -28,9 +31,20 @@ function addOrUpdateRow(label, value) {
         cell2.textContent = value;
     }
 }
-var reset = document.querySelector(".reset");
-reset.addEventListener("click", () => {
-    document.querySelector("#tab").innerHTML = "";
+document.addEventListener('DOMContentLoaded', function() {
+    var reset = document.querySelector(".reset");
+    if (reset) {
+        reset.addEventListener("click", function() {
+            var tab = document.querySelector("#tab");
+            if (tab) {
+                tab.innerHTML = "";
+            } else {
+                console.error('Element with ID "tab" not found');
+            }
+        });
+    } else {
+        console.error('Element with class "reset" not found');
+    }
 });
 
 document.getElementById("nam").addEventListener("input", () => {
@@ -42,11 +56,11 @@ document.getElementById("pass").addEventListener("input", () => {
 document.getElementById("email2").addEventListener("input", () => {
     addOrUpdateRow('email1', document.getElementById("email2").value.trim());
 });
-document.getElementById("address1").addEventListener("input", () => {
-    addOrUpdateRow('address', document.getElementById("address1").value.trim());
+document.getElementById("address").addEventListener("input", () => {
+    addOrUpdateRow('address1', document.getElementById("address").value.trim());
 });
-document.getElementById("dot1").addEventListener("input", () => {
-    addOrUpdateRow('dat', document.getElementById("dot1").value.trim());
+document.getElementById("dat").addEventListener("input", () => {
+    addOrUpdateRow('date', document.getElementById("dat").value.trim());
 });
 
 document.getElementById("pay").addEventListener("input", () => {
@@ -68,14 +82,14 @@ mountain.addEventListener("change", () => {
     addOrUpdateRow('places1', places2.join(", "));
 });
 
-var femaleElement = document.getElementById('mal');
-var maleElement = document.getElementById('female');
+var femaleElement = document.getElementById('fem');
+var maleElement = document.getElementById('mal');
 
 femaleElement.addEventListener("change", () => {
-    addOrUpdateRow('Gender', femaleElement.checked ? "female" : maleElement.checked ? "mal" : "");
+    addOrUpdateRow('Gender', femaleElement.checked ? "female" : femaleElement.checked ? "fem" : "");
 });
 maleElement.addEventListener("change", () => {
-    addOrUpdateRow('Gender', femaleElement.checked ? "female" : maleElement.checked ? "mal" : "");
+    addOrUpdateRow('Gender', maleElement.checked ? "male" : maleElement.checked ? "mal" : "");
 });
 
 
@@ -87,6 +101,8 @@ pack1.addEventListener("change", ()=>{
 pack2.addEventListener("change", ()=>{
     addOrUpdateRow('packages1',pack1.checked ? "package1" : pack2.checked ? "package2":"");
 });
+});
+
 
 
 

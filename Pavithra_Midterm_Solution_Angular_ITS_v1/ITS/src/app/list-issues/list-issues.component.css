@@ -1,0 +1,14 @@
+  
+.container {
+    display: inherit;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    flex-direction: column;
+    color:black;
+    background-size:  5px;
+    width: 600px;
+    background-color: paleturquoise;
+
+}
