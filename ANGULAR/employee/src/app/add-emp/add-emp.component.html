@@ -1,0 +1,29 @@
+<h4> Employee Form!!</h4> <br><br>
+<form (ngSubmit)="createEmployee()" #useForm="ngForm">
+    <div class="form-group"><label for="id"> Id : </label>
+        <input type="text" class="form-control" name="id" [(ngModel)]="employee.id" #id="ngModel" required>
+        <div *ngIf="id.invalid && id.touched" class="text-danger">
+            Id is required.
+        </div>
+    </div>
+    <div class="form-group"><label for="name"> Name : </label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="employee.name" #name="ngModel" required>
+        <div *ngIf="name.invalid && name.touched" class="text-danger">
+            <div *ngIf="name.errors?.['required']"> Name is required. </div>
+            <div *ngIf="name.errors?.['minlength']"> Name must be atleast 3 characters.</div>
+        </div>
+    </div>
+    <div class="form-group"><label for="salary"> Salary : </label>
+        <input type="text" class="form-control" name="salary" [(ngModel)]="employee.salary" #salary="ngModel" required>
+        <div *ngIf="salary.invalid && salary.touched" class="text-danger">
+            <div *ngIf="salary.errors?.['required']"> salary is required. </div>
+            <div *ngIf="salary.errors?.['minlength']"> Please enter the salary </div>
+        </div>
+    </div>
+
+    <!-- <button class="btn btn-success" class="btn btn-warning">Add</button> -->
+     <button type="submit" class="btn btn-success btn-warning" [disabled]="useForm.invalid" >Add</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button type="reset" class="btn btn-info">Clear</button>
+    <br><br>
+</form>

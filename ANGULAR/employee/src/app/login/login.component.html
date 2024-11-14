@@ -1,0 +1,17 @@
+
+<br>
+<h1>Employee Portal</h1>
+<br>
+<div class="container">
+    <form  [formGroup] = "loginForm">
+       <b>Login Id :</b> 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" formControlName ="loginid"><br><br>
+       <b> Password : </b>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="password" formControlName="password">
+        <br><br>
+        <button (click)="onSubmit()">Login</button>
+    </form>
+    
+</div>
