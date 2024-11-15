@@ -1,66 +1,67 @@
+/* General body styles */
 body {
     font-family: Arial, sans-serif;
+    background-color:powderblue;
     margin: 0;
     padding: 0;
-   
-
-}
-
-.container {
-    display: flex;
+    display:inherit;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    text-align: center;
-    flex-direction: column;
-    color:black;
-    background-size:  5px;
-    width: 600px;
-    background-color:paleturquoise;
-
+    height: 100vh; 
 }
 
 
-
-form {
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.container {
+    background-color:cadetblue; /* White background for the container */
+    padding: 20px 30px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
     width: 100%;
-    max-width: 400px;
-    margin-top: 20px;
-    background-color:pink ;
+    max-width: 400px; /* Limit the width of the container */
+    text-align: center;
 }
 
 
+h1 {
+    color:blue; 
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
 
+
+b {
+    color: #555; 
+    font-size: 16px;
+}
+
+/* Input field styling */
 input[type="text"], input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0 16px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
+    width: 100%; /* Make input fields span the full width of the container */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners for inputs */
+    font-size: 16px;
+    box-sizing: border-box; /* Include padding and border in element's total width/height */
 }
 
+/* Button styling */
 button {
-    background-color: #2980b9;
-    color: white;
-    padding: 12px 20px;
-    font-size: 1.1rem;
+    background-color: #007BFF; /* Blue background for the button */
+    color: white; /* White text color */
+    padding: 10px 20px;
+    font-size: 16px;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px; /* Rounded corners for the button */
     cursor: pointer;
-    transition: background-color 0.3s;
-    width: 100%;
+    width: 100%; /* Button spans the full width */
+    transition: background-color 0.3s ease;
 }
 
+/* Button hover effect */
 button:hover {
-    background-color: #3498db;
+    background-color: #0056b3; /* Darker blue on hover */
 }
 
-h1{
-    color: #2d2de3;
-    text-align: center;
 
-}

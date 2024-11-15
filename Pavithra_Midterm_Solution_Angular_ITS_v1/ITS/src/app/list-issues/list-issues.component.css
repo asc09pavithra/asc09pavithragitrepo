@@ -1,14 +1,125 @@
-  
-.container {
-    display: inherit;
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+ /* Light gray background for the whole page */
+    margin: 0;
+    padding: 0;
+    display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    flex-direction: column;
-    color:black;
-    background-size:  5px;
-    width: 600px;
-    background-color: paleturquoise;
+    align-items: flex-start;
+    height: 100vh; /* Full viewport height */
+}
 
+/* Container styling */
+.container {
+    background-color:lightblue; /* White background for the container */
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 1100px; /* Maximum width for the container */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for the container */
+}
+
+/* Header styling */
+h5 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Search input box */
+.form-group {
+    margin-bottom: 20px;
+}
+
+input.form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Table styles */
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse; /* To remove extra space between table cells */
+}
+
+.table-striped {
+    width: 100%;
+    border: 1px solid #ddd;
+    background-color: #f4f4f4;
+    border-radius: 5px; /* Rounded corners for the table */
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14px;
+    color: #555;
+}
+
+thead {
+    background-color: #007BFF; /* Blue background for table headers */
+    color: white; /* White text color for headers */
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9; /* Light gray for odd rows */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #ffffff; /* White for even rows */
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1; /* Light gray hover effect */
+}
+
+/* Button styles */
+.btn {
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Red for delete button */
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+.btn-warning {
+    background-color: #ffc107; /* Yellow for update button */
+    color: black; /* Black text for update button */
+}
+
+.btn-warning:hover {
+    background-color: #e0a800; /* Darker yellow on hover */
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        margin-top: 20px;
+    }
+
+    .table {
+        font-size: 12px; /* Smaller font size for mobile */
+    }
+
+    .form-group input {
+        font-size: 14px; 
+    }
 }
