@@ -1,27 +1,24 @@
-/* General body styling */
+
 body {
-    font-family: Arial, sans-serif;
- /* Light gray background for the whole page */
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    height: 100vh; /* Full viewport height */
+    height: 100vh; 
 }
 
-/* Container styling */
+
 .container {
-    background-color:lightblue; /* White background for the container */
+    background-color:lightblue; 
     padding: 30px;
     margin-top: 30px;
     border-radius: 8px;
     width: 100%;
-    max-width: 1100px; /* Maximum width for the container */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for the container */
+    max-width: 1100px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
-/* Header styling */
 h5 {
     font-size: 20px;
     color: #333;
@@ -29,7 +26,6 @@ h5 {
     font-weight: 600;
 }
 
-/* Search input box */
 .form-group {
     margin-bottom: 20px;
 }
@@ -42,18 +38,17 @@ input.form-control {
     font-size: 16px;
 }
 
-/* Table styles */
 .table {
     width: 100%;
     margin-top: 20px;
-    border-collapse: collapse; /* To remove extra space between table cells */
+    border-collapse: collapse; 
 }
 
 .table-striped {
     width: 100%;
     border: 1px solid #ddd;
     background-color: #f4f4f4;
-    border-radius: 5px; /* Rounded corners for the table */
+    border-radius: 5px; 
 }
 
 th, td {

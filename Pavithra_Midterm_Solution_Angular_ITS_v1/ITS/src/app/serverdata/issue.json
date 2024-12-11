@@ -1,26 +1,6 @@
 {
   "issue": [
     {
-      "id": "153",
-      "title": "Ticket issue",
-      "description": "ticket refund issue",
-      "priority": "high",
-      "status": "resolved",
-      "Assignee": "Pavithra",
-      "Date": "25/10/2024",
-      "assignee": "partha",
-      "date": "13/10/2023"
-    },
-    {
-      "id": "12",
-      "title": "refund issues",
-      "description": "refund issues of ordered items",
-      "priority": "high",
-      "status": "resolved",
-      "assignee": "likhii",
-      "date": "2024-11-12"
-    },
-    {
       "id": "15",
       "title": "serach issue",
       "description": "imporves search history",
