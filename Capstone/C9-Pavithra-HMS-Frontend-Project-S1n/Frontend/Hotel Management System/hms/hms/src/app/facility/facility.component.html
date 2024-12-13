@@ -1,0 +1,74 @@
+<p>Facility Management</p>
+
+<input 
+  type="text" 
+  [(ngModel)]="searchTerm" 
+  (input)="searchFacilities()" 
+  placeholder="Search by Facility or Hotel Name" 
+/>
+
+<button (click)="showAddFacilityForm()">Add Facility</button>
+
+<div *ngIf="showForm">
+  <h3>{{ currentFacility ? 'Edit Facility' : 'Add New Facility' }}</h3>
+  <form (ngSubmit)="saveFacility()" #facilityForm="ngForm">
+    <label for="name">Facility Name:</label>
+    <input 
+      type="text" 
+      [(ngModel)]="newFacility.name" 
+      name="name" 
+      required 
+      minlength="3"
+      #name="ngModel"
+    />
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" style="color: red;">
+      <div *ngIf="name.errors?.['required']">Facility Name is required.</div>
+      <div *ngIf="name.errors?.['minlength']">Facility Name must be at least 3 characters long.</div>
+    </div>
+
+    <label for="hotel">Hotel:</label>
+    <select 
+      [(ngModel)]="newFacility.hotel.id" 
+      name="hotel" 
+      required 
+      #hotel="ngModel"
+    >
+      <option *ngFor="let hotel of hotels" [value]="hotel.id">{{ hotel.name }}</option>
+    </select>
+    <div *ngIf="hotel.invalid && (hotel.dirty || hotel.touched)" style="color: red;">
+      <div *ngIf="hotel.errors?.['required']">Hotel is required.</div>
+    </div>
+
+    <button type="submit" [disabled]="facilityForm.invalid">{{ currentFacility ? 'Update Facility' : 'Add Facility' }}</button>
+  </form>
+</div>
+
+<div *ngIf="!showForm">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Hotel Name</th>
+        <th>Hotel Location</th>
+        <th>Hotel Rating</th>
+        <th>Hotel Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let facility of facilities">
+        <td>{{ facility.name }}</td>
+        <td>{{ facility.hotel.name }}</td>
+        <td>{{ facility.hotel.location }}</td>
+        <td>{{ facility.hotel.rating }}</td>
+        <td>{{ facility.hotel.price }}</td>
+        <td>
+          <button (click)="selectFacilityForEdit(facility)">Edit</button>
+          <button (click)="deleteFacility(facility.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<button (click)="back()">Back</button>

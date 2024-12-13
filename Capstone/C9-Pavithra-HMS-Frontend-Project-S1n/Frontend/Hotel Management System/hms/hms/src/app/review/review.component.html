@@ -1,0 +1,90 @@
+
+
+
+
+<div>
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    (input)="searchReviews()"
+    placeholder="Search by Review Comments, Hotel Name, or Guest Name"
+  />
+</div>
+
+
+<button (click)="openReviewForm()">Add Review</button>
+
+
+<div *ngIf="isReviewFormVisible">
+  <h3>{{ currentReview ? 'Edit Review' : 'Add New Review' }}</h3>
+  <form (ngSubmit)="saveReview()" #reviewForm="ngForm">
+    <label for="comments">Review Comments:</label>
+    <textarea 
+      [(ngModel)]="newReview.comments" 
+      name="comments" 
+      required 
+      minlength="10"
+      #comments="ngModel">
+    </textarea>
+    <div *ngIf="comments.invalid && (comments.dirty || comments.touched)" style="color: red;">
+      <div *ngIf="comments.errors?.['required']">Review Comments are required.</div>
+      <div *ngIf="comments.errors?.['minlength']">Review Comments must be at least 10 characters long.</div>
+    </div>
+
+    <label for="hotel">Hotel:</label>
+    <select 
+      [(ngModel)]="newReview.hotel.id" 
+      name="hotel" 
+      required 
+      #hotel="ngModel">
+      <option *ngFor="let hotel of hotels" [value]="hotel.id">{{ hotel.name }}</option>
+    </select>
+    <div *ngIf="hotel.invalid && (hotel.dirty || hotel.touched)" style="color: red;">
+      <div *ngIf="hotel.errors?.['required']">Hotel is required.</div>
+    </div>
+
+    <label for="guest">Guest:</label>
+    <select 
+      [(ngModel)]="newReview.guest.id" 
+      name="guest" 
+      required 
+      #guest="ngModel">
+      <option *ngFor="let guest of guests" [value]="guest.id">{{ guest.name }}</option>
+    </select>
+    <div *ngIf="guest.invalid && (guest.dirty || guest.touched)" style="color: red;">
+      <div *ngIf="guest.errors?.['required']">Guest is required.</div>
+    </div>
+
+    <button type="submit" [disabled]="reviewForm.invalid">{{ currentReview ? 'Update Review' : 'Add Review' }}</button>
+    <button type="button" (click)="closeReviewForm()">Cancel</button>
+  </form>
+</div>
+
+
+<div *ngIf="!isReviewFormVisible">
+  <h3>Reviews List</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Review Comments</th>
+        <th>Hotel Name</th>
+        <th>Guest Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let review of reviews">
+        <td>{{ review.comments }}</td>
+        <td>{{ review.hotel.name }}</td>
+        <td>{{ review.guest.name }}</td>
+        <td>
+          <button (click)="selectReviewForEdit(review)">Edit</button>
+          <button (click)="deleteReview(review.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<button (click)="back()">Back</button>
+

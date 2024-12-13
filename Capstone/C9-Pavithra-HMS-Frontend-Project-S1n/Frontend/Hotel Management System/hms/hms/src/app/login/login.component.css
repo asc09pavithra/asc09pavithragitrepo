@@ -1,0 +1,86 @@
+#main{
+  background-image: url("../../../public/pavi.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: normal;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin:0;
+  padding: 0;
+  display:grid;
+  align-items: center;
+  height: 100vh;
+}
+
+h1 {
+  color:black;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-container {
+
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width:300px;
+margin-left:450px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+input[type="password"] {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.attempts-info {
+  font-size: 12px;
+  color:red;
+  margin-bottom: 15px;
+}
+
+button {
+  background: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+

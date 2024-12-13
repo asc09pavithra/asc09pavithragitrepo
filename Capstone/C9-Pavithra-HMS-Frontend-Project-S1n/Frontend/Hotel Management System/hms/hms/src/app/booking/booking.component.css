@@ -1,0 +1,63 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table, th, td {
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  button {
+    padding: 8px 16px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .alert {
+    color: green;
+  }
+  
+  input[type="text"], input[type="date"], select {
+    margin: 5px;
+    padding: 8px;
+    width: 200px;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    margin-top: 20px;
+  }
+  td button {
+    padding: 8px 16px;
+    font-size: 12px;
+    margin: 0 5px;
+    border-radius: 5px;
+  }
+  
+  td button:first-child {
+    background-color: #28a745;
+  }
+  
+  td button:first-child:hover {
+    background-color: #218838;
+  }
+  
+  td button:last-child {
+    background-color: #dc3545;
+  }
+  
+  td button:last-child:hover {
+    background-color: #c82333;
+  }

@@ -1,0 +1,49 @@
+<body id="main">
+<h1>Hotel Management System</h1>
+
+<div class="form-container">
+  <form #loginForm="ngForm">
+    <label><b>Enter the email</b></label>
+    <input 
+      [(ngModel)]="userobj.email" 
+      name="email" 
+      type="email" 
+      required 
+      #email="ngModel" 
+    />
+    <div *ngIf="email.invalid && email.touched" class="error">
+      <div *ngIf="email.errors?.['required']">Email is required.</div>
+      <div *ngIf="email.errors?.['email']">Invalid email format.</div>
+    </div>
+    <br />
+    <label><b>Enter the password</b></label>
+    <input 
+      [(ngModel)]="userobj.password" 
+      name="password" 
+      type="password" 
+      required 
+      minlength="6" 
+      #password="ngModel" 
+    />
+    <div *ngIf="password.invalid && password.touched" class="error">
+      <div *ngIf="password.errors?.['required']">Password is required.</div>
+      <div *ngIf="password.errors?.['minlength']">Password must be at least 6 characters long.</div>
+    </div>
+    <br />
+    <div class="error">{{ errorMessage }}</div>
+    <div class="attempts-info">
+      <p *ngIf="maxAttemptsReached">Account locked for 30 minutes. Try again after {{ remainingTime }} seconds.</p>
+      <p *ngIf="!maxAttemptsReached">Attempts left: {{ maxAttempts - attempts }}</p>
+    </div>
+    <button 
+      (click)="onlogin(loginForm)" 
+      [disabled]="isLockedOut || maxAttemptsReached || loginForm.invalid"
+    >Login</button>
+
+
+
+  </form>
+</div>
+</body>
+
+

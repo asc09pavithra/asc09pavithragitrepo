@@ -1,0 +1,102 @@
+<p><b>Guest Management</b></p>
+
+<button (click)="showAddGuestForm()">Add New Guest</button>
+
+<br />
+<input type="text" [(ngModel)]="searchTerm" (input)="searchGuests()" placeholder="Search by ID, name, email, or nationality" />
+
+<div *ngIf="showForm">
+  <div *ngIf="currentGuest">
+    <h3>Edit Guest</h3>
+    <form #guestForm="ngForm" (ngSubmit)="saveGuest()">
+      <label for="name">Guest Name:</label>
+      <input type="text" [(ngModel)]="newGuest.name" name="name" required #name="ngModel" />
+      <div *ngIf="name.invalid && name.touched" class="error">
+        <div *ngIf="name.errors?.['required']">Guest name is required.</div>
+      </div>
+
+      <label for="email">Email:</label>
+      <input type="email" [(ngModel)]="newGuest.email" name="email" required #email="ngModel" />
+      <div *ngIf="email.invalid && email.touched" class="error">
+        <div *ngIf="email.errors?.['required']">Email is required.</div>
+        <div *ngIf="email.errors?.['email']">Invalid email format.</div>
+      </div>
+
+      <label for="phone">Phone:</label>
+      <input type="tel" [(ngModel)]="newGuest.phone" name="phone" required #phone="ngModel" />
+      <div *ngIf="phone.invalid && phone.touched" class="error">
+        <div *ngIf="phone.errors?.['required']">Phone number is required.</div>
+      </div>
+
+      <label for="nationality">Nationality:</label>
+      <input type="text" [(ngModel)]="newGuest.nationality" name="nationality" required #nationality="ngModel" />
+      <div *ngIf="nationality.invalid && nationality.touched" class="error">
+        <div *ngIf="nationality.errors?.['required']">Nationality is required.</div>
+      </div>
+
+      <button type="submit" [disabled]="guestForm.invalid">Update Guest</button>
+    </form>
+  </div>
+
+  <div *ngIf="!currentGuest">
+    <h3>Add New Guest</h3>
+    <form #guestForm="ngForm" (ngSubmit)="saveGuest()">
+      <label for="name">Guest Name:</label>
+      <input type="text" [(ngModel)]="newGuest.name" name="name" required #name="ngModel" />
+      <div *ngIf="name.invalid && name.touched" class="error">
+        <div *ngIf="name.errors?.['required']">Guest name is required.</div>
+      </div>
+
+      <label for="email">Email:</label>
+      <input type="email" [(ngModel)]="newGuest.email" name="email" required #email="ngModel" />
+      <div *ngIf="email.invalid && email.touched" class="error">
+        <div *ngIf="email.errors?.['required']">Email is required.</div>
+        <div *ngIf="email.errors?.['email']">Invalid email format.</div>
+      </div>
+
+      <label for="phone">Phone:</label>
+      <input type="tel" [(ngModel)]="newGuest.phone" name="phone" required #phone="ngModel" />
+      <div *ngIf="phone.invalid && phone.touched" class="error">
+        <div *ngIf="phone.errors?.['required']">Phone number is required.</div>
+      </div>
+
+      <label for="nationality">Nationality:</label>
+      <input type="text" [(ngModel)]="newGuest.nationality" name="nationality" required #nationality="ngModel" />
+      <div *ngIf="nationality.invalid && nationality.touched" class="error">
+        <div *ngIf="nationality.errors?.['required']">Nationality is required.</div>
+      </div>
+
+      <button type="submit" [disabled]="guestForm.invalid">Add Guest</button>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="!showForm">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Nationality</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let guest of filteredGuests">
+        <td>{{ guest.id }}</td>
+        <td>{{ guest.name }}</td>
+        <td>{{ guest.email }}</td>
+        <td>{{ guest.phone }}</td>
+        <td>{{ guest.nationality }}</td>
+        <td>
+          <button (click)="selectGuestForEdit(guest)">Edit</button>
+          <button (click)="deleteGuest(guest.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<button (click)="back()">Back</button>

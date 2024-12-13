@@ -1,0 +1,121 @@
+
+<p><b>Hotel Management</b></p>
+
+<button (click)="showAddHotelForm()">Add New Hotel</button>
+
+<br />
+<input type="text" [(ngModel)]="searchTerm" (input)="searchHotels()" placeholder="Search by ID, name, or location" />
+
+<div *ngIf="showForm">
+  <div *ngIf="currentHotel">
+    <h3>Edit Hotel</h3>
+    <form #hotelForm="ngForm" (ngSubmit)="saveHotel()">
+      <label for="name">Hotel Name:</label>
+      <input type="text" [(ngModel)]="newHotel.name" name="name" required #name="ngModel" />
+      <div *ngIf="name.invalid && name.touched" class="error">
+        <div *ngIf="name.errors?.['required']">Hotel name is required.</div>
+      </div>
+
+      <label for="location">Location:</label>
+      <input type="text" [(ngModel)]="newHotel.location" name="location" required #location="ngModel" />
+      <div *ngIf="location.invalid && location.touched" class="error">
+        <div *ngIf="location.errors?.['required']">Location is required.</div>
+      </div>
+
+      <label for="rating">Rating:</label>
+      <input type="number" [(ngModel)]="newHotel.rating" name="rating" required min="1" max="5" #rating="ngModel" />
+      <div *ngIf="rating.invalid && rating.touched" class="error">
+        <div *ngIf="rating.errors?.['required']">Rating is required.</div>
+        <div *ngIf="rating.errors?.['min'] || rating.errors?.['max']">Rating must be between 1 and 5.</div>
+      </div>
+
+      <label for="price">Price:</label>
+      <input type="number" [(ngModel)]="newHotel.price" name="price" required min="0" #price="ngModel" />
+      <div *ngIf="price.invalid && price.touched" class="error">
+        <div *ngIf="price.errors?.['required']">Price is required.</div>
+        <div *ngIf="price.errors?.['min']">Price must be a positive number.</div>
+      </div>
+
+      <label for="rooms">Rooms:</label>
+      <input type="number" [(ngModel)]="newHotel.rooms" name="rooms" required min="1" #rooms="ngModel" />
+      <div *ngIf="rooms.invalid && rooms.touched" class="error">
+        <div *ngIf="rooms.errors?.['required']">Number of rooms is required.</div>
+        <div *ngIf="rooms.errors?.['min']">There must be at least 1 room.</div>
+      </div>
+
+      <button type="submit" [disabled]="hotelForm.invalid">Update Hotel</button>
+    </form>
+  </div>
+
+  <div *ngIf="!currentHotel">
+    <h3>Add New Hotel</h3>
+    <form #hotelForm="ngForm" (ngSubmit)="saveHotel()">
+      <label for="name">Hotel Name:</label>
+      <input type="text" [(ngModel)]="newHotel.name" name="name" required #name="ngModel" />
+      <div *ngIf="name.invalid && name.touched" class="error">
+        <div *ngIf="name.errors?.['required']">Hotel name is required.</div>
+      </div>
+
+      <label for="location">Location:</label>
+      <input type="text" [(ngModel)]="newHotel.location" name="location" required #location="ngModel" />
+      <div *ngIf="location.invalid && location.touched" class="error">
+        <div *ngIf="location.errors?.['required']">Location is required.</div>
+      </div>
+
+      <label for="rating">Rating:</label>
+      <input type="number" [(ngModel)]="newHotel.rating" name="rating" required min="1" max="5" #rating="ngModel" />
+      <div *ngIf="rating.invalid && rating.touched" class="error">
+        <div *ngIf="rating.errors?.['required']">Rating is required.</div>
+        <div *ngIf="rating.errors?.['min'] || rating.errors?.['max']">Rating must be between 1 and 5.</div>
+      </div>
+
+      <label for="price">Price:</label>
+      <input type="number" [(ngModel)]="newHotel.price" name="price" required min="0" #price="ngModel" />
+      <div *ngIf="price.invalid && price.touched" class="error">
+        <div *ngIf="price.errors?.['required']">Price is required.</div>
+        <div *ngIf="price.errors?.['min']">Price must be a positive number.</div>
+      </div>
+
+      <label for="rooms">Rooms:</label>
+      <input type="number" [(ngModel)]="newHotel.rooms" name="rooms" required min="1" #rooms="ngModel" />
+      <div *ngIf="rooms.invalid && rooms.touched" class="error">
+        <div *ngIf="rooms.errors?.['required']">Number of rooms is required.</div>
+        <div *ngIf="rooms.errors?.['min']">There must be at least 1 room.</div>
+      </div>
+
+      <button type="submit" [disabled]="hotelForm.invalid">Add Hotel</button>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="!showForm">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Rating</th>
+        <th>Price</th>
+        <th>Rooms</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let hotel of filteredHotels">
+        <td>{{ hotel.id }}</td>
+        <td>{{ hotel.name }}</td>
+        <td>{{ hotel.location }}</td>
+        <td>{{ hotel.rating }}</td>
+        <td>{{ hotel.price }}</td>
+        <td>{{ hotel.rooms }}</td>
+        <td>
+          <button (click)="selectHotelForEdit(hotel)">Edit</button>
+          <button (click)="deleteHotel(hotel.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<button (click)="back()">Back</button>

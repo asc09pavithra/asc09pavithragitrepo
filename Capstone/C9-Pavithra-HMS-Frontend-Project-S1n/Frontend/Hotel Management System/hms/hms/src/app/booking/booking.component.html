@@ -1,0 +1,89 @@
+ <div *ngIf="successMessage" class="alert alert-success">
+  {{ successMessage }}
+</div>
+
+<p><b>Booking Management</b></p>
+
+<input type="text" [(ngModel)]="searchTerm" (input)="searchBookings()" placeholder="Search by Booking ID, Guest Name, or Hotel Name" />
+
+<button (click)="toggleBookingForm()">Add Booking</button>
+
+<div *ngIf="showBookingForm">
+  <h3 *ngIf="currentBooking">Edit Booking</h3>
+  <h3 *ngIf="!currentBooking">Add New Booking</h3>
+  <form (ngSubmit)="saveBooking()" #bookingForm="ngForm">
+    <label for="guest">Guest:</label>
+    <select [(ngModel)]="newBooking.guest.id" name="guest" required #guest="ngModel">
+      <option *ngFor="let guest of guests" [value]="guest.id">{{ guest.name }}</option>
+    </select>
+    <div *ngIf="guest.invalid && (guest.dirty || guest.touched)" style="color: red;">
+      <div *ngIf="guest.errors?.['required']">Guest is required.</div>
+    </div>
+
+    <label for="hotel">Hotel:</label>
+    <select [(ngModel)]="newBooking.hotel.id" name="hotel" required #hotel="ngModel">
+      <option *ngFor="let hotel of hotels" [value]="hotel.id">{{ hotel.name }}</option>
+    </select>
+    <div *ngIf="hotel.invalid && (hotel.dirty || hotel.touched)" style="color: red;">
+      <div *ngIf="hotel.errors?.['required']">Hotel is required.</div>
+    </div>
+
+    <label for="room">Room:</label>
+    <input type="number" [(ngModel)]="newBooking.room" name="room" required #room="ngModel" />
+    <div *ngIf="room.invalid && (room.dirty || room.touched)" style="color: red;">
+      <div *ngIf="room.errors?.['required']">Room is required.</div>
+    </div>
+
+    <div>
+      <label for="checkinDate">Check-in Date:</label>
+      <input type="date" [(ngModel)]="newBooking.checkinDate" name="checkinDate" required #checkinDate="ngModel" [min]="minCheckinDate" />
+      <div *ngIf="checkinDate.invalid && checkinDate.touched" class="error-message">
+        Check-in date is required and cannot be in the past.
+      </div>
+    </div>
+ 
+    <div>
+      <label for="checkoutDate">Check-out Date:</label>
+      <input type="date" [(ngModel)]="newBooking.checkoutDate" name="checkoutDate" required #checkoutDate="ngModel" [min]="newBooking.checkinDate" />
+      <div *ngIf="checkoutDate.invalid && checkoutDate.touched" class="error-message">
+        Check-out date is required and cannot be before the check-in date.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="bookingForm.invalid">{{ currentBooking ? 'Update Booking' : 'Add Booking' }}</button>
+  </form>
+</div>
+
+<div *ngIf="!showBookingForm">
+  <table>
+    <thead>
+      <tr>
+        <th>Booking ID</th>
+        <th>Guest Name</th>
+        <th>Hotel Name</th>
+        <th>Room</th>
+        <th>Check-in Date</th>
+        <th>Check-out Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings">
+        <td>{{ booking.id }}</td>
+        <td>{{ booking.guest.name }}</td>
+        <td>{{ booking.hotel.name }}</td>
+        <td>{{ booking.room }}</td>
+        <td>{{ booking.checkinDate }}</td>
+        <td>{{ booking.checkoutDate }}</td>
+        <td>
+          <button (click)="selectBookingForEdit(booking)">Edit</button>
+          <button (click)="deleteBooking(booking.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<button (click)="back()">Back</button> 
+
+ 
